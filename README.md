@@ -26,3 +26,11 @@ Learning Unit Test by Jest offical web site
 |4/24|Jest Platform|Chris|
 |4/31|
 
+## 進行方式
+
+每一個人用自己的英文名字開一個自己的分支
+用資料夾區分每一週的練習內容，並且寫上 README.md 說明
+
+每一週由導讀人先說自己做了什麼
+每一個人再以「與導讀人做的不同」為最優先提出，各自自由補充討論
+
