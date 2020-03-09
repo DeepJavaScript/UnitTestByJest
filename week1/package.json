@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Lai",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
 }
