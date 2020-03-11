@@ -1,6 +1,4 @@
-// const testFn = require('../js/exercise');
 import * as testFn from '../js/exercise'
-// console.log("Output: testFn", sum)
 
 
 describe('Use matchers exercise', () => {
