@@ -7,7 +7,7 @@ Node version: v12.16.1
 ### step 1 - install Jest globally
 
 ```
-yarn global add jest --prefix /usr/local
+yarn global add jest
 ```
 
 ## local install
@@ -58,5 +58,6 @@ module.exports = {
 ## Jest with TypeScript
 
 ```
-yarn add typescript @babel/preset-typescript
+yarn add typescript @babel/preset-typescript @types/jest
+tsc --init
 ```
