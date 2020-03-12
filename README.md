@@ -3,7 +3,6 @@ Learning Unit Test by Jest offical web site
 
 2020/3/5 DeepJavaScript 決定要讀 unit test，以 [Jest 的 Document](https://jestjs.io/docs/en/getting-started) 入手
 
-
 ## 進行方式
 
 每一個人用自己的英文名字開一個自己的分支
