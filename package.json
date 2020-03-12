@@ -1,0 +1,22 @@
+{
+  "name": "unittestbyjest",
+  "version": "1.0.0",
+  "description": "Learning Unit Test by Jest offical web site",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeepJavaScript/UnitTestByJest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeepJavaScript/UnitTestByJest/issues"
+  },
+  "homepage": "https://github.com/DeepJavaScript/UnitTestByJest#readme",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
