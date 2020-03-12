@@ -1,0 +1,8 @@
+.DS_Store
+.DS_STORE
+*.log
+.DS_Store
+*.swp
+q.vscode
+
+node_modules/
