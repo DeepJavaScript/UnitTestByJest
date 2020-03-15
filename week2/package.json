@@ -1,0 +1,10 @@
+{
+  "name": "week2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Lai",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
