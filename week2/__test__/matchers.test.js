@@ -1,3 +1,6 @@
+import { matchers } from 'jest-json-schema';
+expect.extend(matchers);
+
 // 非物件等於
 test('two plus two is four', () => {
   expect(2 + 2).toBe(4);
@@ -128,3 +131,24 @@ test('object containing', () => {
   expect(data).toMatchObject(schema);  // PASS
   expect(data).toEqual(expect.objectContaining(schema))  // PASS
 });
+
+test('API format match schema',()=>{
+  const apiData = {
+    "userId": 1,
+    "id": 1,
+    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+  };
+  const schema = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://jsonplaceholder.typicode.com/posts/1",
+    "type": "object",
+    "properties": {
+        "userId": { "type": "number" },
+        "id": { "type": "number" },
+        "title": { "type": "string" },
+        "body": { "type": "string" },
+    }
+  }
+  expect(apiData).toMatchSchema(schema);
+})
