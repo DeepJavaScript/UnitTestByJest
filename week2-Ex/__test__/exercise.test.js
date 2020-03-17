@@ -1,5 +1,6 @@
 import * as testFn from '../js/exercise'
-
+import { matchers } from 'jest-json-schema';
+expect.extend(matchers);
 
 describe('Use matchers exercise', () => {
   test('Matcher: toBe, to match value.', () => {
@@ -47,6 +48,65 @@ describe('Use matchers exercise', () => {
     let getValue = testFn.sum(a, b);
     // Assert
     expect(getValue).toBeCloseTo(0.3);
+  });
+
+
+  test('Matcher: toMatch, to check string equality with regular expressions.', () => {
+    // Arrang
+    let str = '.txet si sihT';
+    // Act 
+    let getValue = testFn.getString(str);
+    // Assert
+    expect(getValue).toMatch(/text/);
+  });
+
+  test('Matcher: toMatchObject, to check string equality with regular expressions.', () => {
+    // Arrang
+    let arr = [
+      { a: 123 },
+      {
+        b: 456,
+        c: 789
+      }
+    ];
+    // Act 
+    let getValue = testFn.getArray(arr);
+    // Assert
+    expect(getValue).toMatchObject([
+      { a: 123 },
+      { b: 456 }
+    ]);
+  });
+
+  test('Matcher: toContain, to check if an array or iterable contains a particular item.', () => {
+    // Arrang
+    let arr = ['beer'];
+    // Act 
+    let getValue = testFn.getArray(arr);
+    // Assert
+    expect(getValue).toContain('beer');
+  }); 
+
+  test('Matcher: toThrow, to test that a particular function throws an error when it\'s called.', () => {
+    // Arrang
+
+    // Act 
+    
+    // Assert
+    expect(testFn.throwError).toThrow(Error);
+    expect(testFn.throwError).toThrow('you are using the wrong JDK');
+    expect(testFn.throwError).toThrow(/wrong/);
+  }); 
+
+
+  test('Matcher: toMatchSchema', () => {
+    const schema = {
+      properties:  {
+        hello: {type: 'string'}
+      },
+      required: ['hello'],
+    }
+    expect({ hello: 'world'}).toMatchSchema(schema)
   });
 
 })
