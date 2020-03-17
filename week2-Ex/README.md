@@ -1,102 +1,97 @@
 # Using Matchers
 
-## Install Jest using yarn:
+僅列舉各類 matcher 中的幾個。
 
-```
-yarn add --dev jest
-```
-## Install Jest using npm:
+## `toBe()`
 
-```
-npm install --save-dev jest
-```
+`toBe()` uses Object.is to test exact equality
 
-## First test
+## `toEqual()`
 
-```
-//sum.js
-function sum(a, b) {
-  return a + b;
-}
-module.exports = sum;
-```
+`toEqual()` check the value of an object.
 
-```
-// sum.test.js
-const sum = require('./sum');
+## `toBeTruthy()`
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
+`toBeTruthy()` matches anything that an if statement treats as `true`
+
+## `toBeGreaterThan()`
+
+`toBeGreaterThan()` use to compare numbers.
+
+## `toBeClostTo()`
+
+`toBeClostTo()` use to test floating point equality.
+
+## `toContain()`
+
+`toContain` use to check if an array or iterable contains a particular item.
+
+Note: If items in array are object, use `toEqual()` instead .
+
+## `toMatch()`
+
+`toMatch` use to check string equality with regular expressions.
+
+## `toMatchObject()`
+
+1. `toMatchObject()` use to to check that a JavaScript object matches a **subset** of the properties of an object.
+2. `toMatchOnject()` can also pass an array of objects.(We can only test partial properties to each objects.)
+
+```javascript=
+test('Matcher: toMatchObject, to check string equality with regular expressions.', () => {
+  // Arrang
+  let arr = [
+    { a: 123 },
+    {
+      b: 456,
+      c: 789
+    }
+  ];
+  // Act 
+  let getValue = testFn.getArray(arr);
+  // Assert
+  expect(getValue).toMatchObject([
+    { a: 123 },
+    { b: 456 }
+  ]);
 });
 ```
 
-## Add to your `package.json`
+## `expect.extend(matchers)`
 
+Custom matchers which you need.
+
+[Link](https://jestjs.io/docs/en/expect#expectextendmatchers)
+
+
+## Install jest-json-schema
+
+```bash=
+$ npm install --save-dev jest-json-schema
 ```
-{
-  "scripts": {
-    "test": "jest"
+
+### Import jest-json-schema
+
+```javascript
+import { matchers } from 'jest-json-schema';
+expect.extend(matchers);
+```
+
+### Basic use 
+
+```javascript
+test('Matcher: toMatchSchema', () => {
+  const schema = {
+    properties:  {
+      hello: {type: 'string'}
+    },
+    required: ['hello'],
   }
-}
+  expect({ hello: 'world'}).toMatchSchema(schema)
+});
 ```
 
-## Run your first test!
+## 參考資料
 
-```
-// use yarn
-yarn test
-```
-
-```
-// use npm
-npm run test
-```
-
-## Additional Configuration
-
-```
-jest --init
-```
-
-It will gernerate a `jest.config.js` file in your project.
-
-## Want to use ES6 method: `export` and `import`
-
-### Using Babel
-
-```
-yarn add --dev babel-jest @babel/core @babel/preset-env
-```
-
-### Add babel.config.js
-
-```
-module.exports = {
-  presets: [
-    [
-      '@babel/preset-env',
-      {
-        targets: {
-          node: 'current',
-        },
-      },
-    ],
-  ],
-};
-```
-
-## Coverage report
-
-![](https://i.imgur.com/snpFivv.png)
-
-- Stmts: statements，是否每一個敘述句都已經執行?
-- Branch: 是否每一個分支都已經執行?(Ex. if 敘述句，是否同時執行了 true and false?)
-- Funcs: Functions: 是否每一個功能都已經執行?
-- Lines: 是否每一行都已經執行?
-
-### Coverage report index.html from coverage folder
-![](https://i.imgur.com/4lE68Eh.png)
-
-![](https://i.imgur.com/Gk7L9Uz.png)
-
-- 1x: It means function `sum` execute one time.
+- [jest-json-schema](https://www.npmjs.com/package/jest-json-schema)
+- [驗證資料的好幫手 - JSON Schema Validator](https://github.com/Hsueh-Jen/blog/issues/2#intro) 
