@@ -149,6 +149,5 @@ test("test json format", () => {
 
 ## Reference
 
--[jest official docs](https://jestjs.io/docs/en/using-matchers)
-
+- [jest official docs](https://jestjs.io/docs/en/using-matchers)
 - [jest-json-schema](https://www.npmjs.com/package/jest-json-schema)
