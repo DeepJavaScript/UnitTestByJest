@@ -1,0 +1,26 @@
+{
+  "name": "unit-test-by-jest",
+  "version": "1.0.0",
+  "description": "Learning Unit Test by Jest offical web site",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeepJavaScript/UnitTestByJest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeepJavaScript/UnitTestByJest/issues"
+  },
+  "homepage": "https://github.com/DeepJavaScript/UnitTestByJest#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "babel-jest": "^25.1.0",
+    "jest": "^25.1.0"
+  }
+}
