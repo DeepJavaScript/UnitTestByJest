@@ -4,7 +4,8 @@
   "description": "Learning Unit Test by Jest offical web site",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-d": "jest --debug"
   },
   "repository": {
     "type": "git",
