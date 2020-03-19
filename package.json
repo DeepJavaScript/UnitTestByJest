@@ -4,7 +4,8 @@
   "description": "Learning Unit Test by Jest offical web site",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test1": "jest ./2020-03-12/ --watch --config=jest.config.js",
+    "test2": "jest ./2020-03-19/ --watch --config=jest.config.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,8 @@
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
     "babel-jest": "^25.1.0",
-    "jest": "^25.1.0"
-  }
+    "jest": "^25.1.0",
+    "jest-json-schema": "^2.1.0"
+  },
+  "dependencies": {}
 }
