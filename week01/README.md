@@ -97,8 +97,9 @@ test('adds 1 + 2 to equal 3', () => {
 ![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/6t6rbufbulmmkknwyacg.png)
 
 # Using TypeScript
-Generate configuration file of TypeScript:
+Install TypeScript and generate configuration file of TypeScript:
 ```
+inatall --save-dev typescript
 tsc --init
 ```
 

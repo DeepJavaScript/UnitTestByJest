@@ -4,7 +4,8 @@
   "description": "First: ``` npm init -y ```",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test-debug": "jest --debug"
   },
   "keywords": [],
   "author": "",
