@@ -1,11 +1,10 @@
 {
-
     "name": "week01",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "test": "jest"
+        "test": "jest --coverage"
     },
     "devDependencies": {
         "@babel/core": "^7.8.7",
