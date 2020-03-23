@@ -18,6 +18,8 @@ const promiseObj = () => {
     },2000)
   })
 }
+
+
 export {
   fetchData,
   promiseObj,

@@ -25,8 +25,18 @@ describe('Test callback Function', () => {
     // Arrange
     let promise;
     // Act
-    promise = fn.promiseObj();
+    promise = fn.promiseObj(); // get promise object.
     //Assert
     return expect(promise).resolves.toBe('Time\'s up!');
+  });
+
+  test('Test Promise: use async, await', async () => {
+    // Arrange
+    let promise;
+    // Act
+    promise = fn.promiseObj(); // get promise object.
+    
+    //Assert
+    await expect(promise).resolves.toBe('Time\'s up!');
   });
 })
