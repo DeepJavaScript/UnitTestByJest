@@ -1,5 +1,5 @@
 {
-  "name": "week2-Ex",
+  "name": "week3-Ex",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -13,5 +13,6 @@
   "scripts": {
     "test": "jest",
     "test-coverage": "jest --coverage"
-  }
+  },
+  "dependencies": {}
 }
