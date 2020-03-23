@@ -51,3 +51,15 @@ test('Test fn: asyncFunc',  done => {
 });
 ```
 
+## 使用 async/await 搭配 `resolves` /`rejects`
+
+```javascript=
+test('Test Promise: use async, await', async () => {
+    // Arrange
+    let promise;
+    // Act
+    promise = fn.promiseObj(); // get promise object.
+    
+    //Assert
+    await expect(promise).resolves.toBe('Time\'s up!');
+  });
