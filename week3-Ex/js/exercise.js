@@ -11,6 +11,14 @@ function callback(data) {
 
 fetchData(callback);
 
+const promiseObj = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Time\'s up!');
+    },2000)
+  })
+}
 export {
-  result,
+  fetchData,
+  promiseObj,
 }

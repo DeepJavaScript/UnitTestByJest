@@ -11,4 +11,22 @@ describe('Test callback Function', () => {
     // Act
     fn.fetchData(callback);
   });
+
+  test('Test Promise', () => {
+    // Act
+    return fn.promiseObj()
+      .then(data => {
+        //Assert
+        expect(data).toBe('Time\'s up!');
+      });
+  });
+
+  test('Test Promise: use resolves', () => {
+    // Arrange
+    let promise;
+    // Act
+    promise = fn.promiseObj();
+    //Assert
+    return expect(promise).resolves.toBe('Time\'s up!');
+  });
 })
