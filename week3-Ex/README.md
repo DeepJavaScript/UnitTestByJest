@@ -51,9 +51,85 @@ test('Test fn: asyncFunc',  done => {
 });
 ```
 
+## Promise
+
+對於回傳若為 `Promise` 的物件也同樣可以進行測試，如果:
+
+1. `Promise` 為 `resolve`，則測試會等待其 `reslove` 後的值後完成測試。
+2. `Promise` 為 `reject`，則測試會失敗。
+
+下列程式碼說明在測試中如果沒有回傳 promise 的話，則會導致**測試會比 promise 物件解析來得早完成。**
+
+```javascript=
+// src.js
+const promiseObj = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Time\'s up!');
+    },2000)
+  })
+}
+```
+
+```javascript=
+// test.js
+// It will get test string first and promise string second.
+test('Test Promise', done => {
+  // Act
+  fn.promiseObj()
+    .then(data => {
+      console.log('promise');
+      //Assert
+      expect(data).toBe('Time\'s up!');
+      done();
+    });
+  console.log('test');
+})
+```
+
+所以需要寫成如下方測試：
+```javascript=
+// test.js
+test('Test Promise', done => {
+  // Act
+  return fn.promiseObj()
+    .then(data => {
+      //Assert
+      expect(data).toBe('Time\'s up!');
+      done();
+    });
+})
+```
+
+### 透過 `resolves` /`rejects` 改寫上方程式碼
+
+```javascript=
+// src.js
+const promiseObj = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Time\'s up!');
+    },2000)
+  })
+}
+```
+
+```javascript=
+// test.js
+test('Test Promise', () => {
+  // Arrange
+  let promise;
+  // Act
+  promise = fn.promiseObj();
+  //Assert
+  return expect(promise).resolves.toBe('Time\'s up!');
+})
+```
+
 ## 使用 async/await 搭配 `resolves` /`rejects`
 
 ```javascript=
+// test.js
 test('Test Promise: use async, await', async () => {
     // Arrange
     let promise;
