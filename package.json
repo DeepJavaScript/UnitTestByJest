@@ -1,16 +1,15 @@
 {
-  "name": "UnitTestByJest",
+  "name": "unittestbyjest",
   "version": "1.0.0",
   "description": "Learning Unit Test by Jest offical web site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest ./2020-03-12/ --watch --config=jest.config.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DeepJavaScript/UnitTestByJest.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
