@@ -1,3 +1,5 @@
+import { promiseGenerator } from '../utils/promiseUtils';
+
 function toBeWithInRange(received, floor, ceiling) {
   return received >= floor && received <= ceiling
     ? {
@@ -24,16 +26,6 @@ function toBeWithOutRange(received, floor, ceiling) {
           `expected ${received} to be without range ${floor} - ${ceiling}`,
         pass: false,
       };
-};
-
-function promiseGenerator(isResolved) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      isResolved
-        ? resolve('resolved')
-        : reject('rejected');
-    }, 500);
-  });
 };
 
 async function willGeneratePromiseWith(received, fulfilled) {
