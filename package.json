@@ -4,7 +4,9 @@
   "description": "Learning Unit Test by Jest offical web site",
   "main": "index.js",
   "scripts": {
-    "test": "jest ./2020-03-12/ --watch --config=jest.config.js"
+    "test01": "jest ./2020-03-12/ --watch --config=jest.config.js",
+    "test02": "jest ./2020-03-19/ --watch --config=jest.config.js",
+    "test03": "jest ./2020-03-26/ --watch --config=jest.config.js"
   },
   "repository": {
     "type": "git",
