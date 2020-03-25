@@ -8,7 +8,8 @@
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
-    "babel-jest": "^25.1.0"
+    "babel-jest": "^25.1.0",
+    "jest-json-schema": "^2.1.0"
   },
   "scripts": {
     "test": "jest"
