@@ -134,6 +134,21 @@ test('Async/Await with rejects', async () => {
 
 Matchers Note:
 - `expect.assertions(number)` :
+```js
+test('doAsync calls both callbacks', () => {
+  expect.assertions(2);
+  function callback1(data) {
+    expect(data).toBeTruthy();
+  }
+  function callback2(data) {
+    expect(data).toBeTruthy();
+  }
+
+  doAsync(callback1, callback2);
+});
+```
+此 matchers 確保在非同步時有確實呼叫到斷言的數量。
 - `done` :
-- `resolves` :
-- `rejects` :
+將測試語句帶入單一參數 `done`，若 `done` 被呼叫，等同告訴 Jest 非同步呼叫結束，若呼叫失敗，可能發生逾時之類的錯誤。
+
+- `resolves`、`rejects` :使用 `resolves` 或 `rejects` 之類的 matchers 語句，可以使用如同 jQuery 般的鏈接方式執行，若 Promise 在 `resolves` 中失敗，表示呼叫失敗，若 Promise 在 `rejects` 中失敗，表示呼叫成功。
