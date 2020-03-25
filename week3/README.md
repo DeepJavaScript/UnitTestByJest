@@ -111,12 +111,9 @@ function fetchDataReturnPromise() {
 ```
 
 ```javascript
-test('test fetchDataReturnPromise', () => {
+test.skip('test fetchDataReturnPromise error', () => {
   expect.assertions(1);
   return fetchData.fetchDataReturnPromise()
-    .then(res => {
-      expect(res).toBe('peanut butter')
-    })
     .catch(e => {
       expect(e).toBe('something error')
     })
@@ -134,7 +131,8 @@ test('test fetchDataReturnPromise with matchers', () => {
 });    
 
 // 例如 rejects
-test('test fetchDataReturnPromise with matchers', () => {
+test('test fetchDataReturnPromise error with matchers', () => {
+  expect.assertions(1);
   return expect(fetchData.fetchDataReturnPromise()).rejects.toBe('something error')
 });
 ```
@@ -147,23 +145,27 @@ test('test fetchDataReturnPromise with matchers', () => {
 ```javascript
 //  try catch 寫法
 test('test fetchDataReturnPromise with async/await', async () => {
+  let res = await fetchData.fetchDataReturnPromise();
+  expect(res).toBe('some data');
+});
+
+test('test fetchDataReturnPromise with async/await', async () => {
+  expect.assertions(1);
   try {
-    let res = await fetchData.fetchDataReturnPromise();
-    expect(res).toBe('peanut butter');
+    await fetchData.fetchDataReturnPromise();
   } catch (e) {
     expect(e).toBe('something error');
   }
 });
 
+
 // matchers 寫法
-// resolves
 
 test('test fetchDataReturnPromise with matchers and async/await', async() => {
-  await expect(fetchData.fetchDataReturnPromise()).resolves.toBe('peanut butter')
+  await expect(fetchData.fetchDataReturnPromise()).resolves.toBe('some data')
 });
-
-// rejects
-test('test fetchDataReturnPromise with matchers and async/await', async() => {
+test('test fetchDataReturnPromise error with matchers and async/await', async() => {
+  expect.assertions(1);
   await expect(fetchData.fetchDataReturnPromise()).rejects.toBe('something error')
 });
 ```
