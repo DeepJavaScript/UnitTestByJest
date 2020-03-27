@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1584959912172" clover="3.2.0">
-  <project timestamp="1584959912172" name="All files">
-    <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5" elements="15" coveredelements="15" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
+<coverage generated="1585220700879" clover="3.2.0">
+  <project timestamp="1585220700879" name="All files">
+    <metrics statements="10" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2" elements="15" coveredelements="7" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
     <file name="async.js" path="/Users/Lai/Desktop/UnitTestByJest/week3/js/async.js">
-      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+      <metrics statements="10" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
       <line num="2" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
       <line num="6" count="1" type="stmt"/>
-      <line num="10" count="1" type="stmt"/>
-      <line num="11" count="1" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="14" count="1" type="stmt"/>
-      <line num="17" count="1" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="12" count="0" type="stmt"/>
+      <line num="14" count="0" type="stmt"/>
+      <line num="17" count="0" type="stmt"/>
       <line num="20" count="1" type="stmt"/>
     </file>
   </project>
