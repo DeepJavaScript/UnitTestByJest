@@ -1,4 +1,4 @@
-# Jest Unit Test - Week_1 - Getting start
+# Jest Unit Test - Week_01 - Getting start
 這是 Jest Unit Test 讀書會的第一週，透過 Jest Document 來學習，第一週試著透過文件來安裝 Jest，做第一個簡單的測試。
 
 ## 使用 npm 套件工具管理
