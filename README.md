@@ -3,7 +3,7 @@
 |Date|Subject|Host|Practice|
 |--- |-------|----|--------|
 |3/12|Getting Started|Kira|[Week01](https://github.com/DeepJavaScript/UnitTestByJest/tree/jinwen/week_01)|
-|3/19|Using Matchers|Lai|
+|3/19|Using Matchers|Lai|[Week02](https://github.com/DeepJavaScript/UnitTestByJest/tree/jinwen/week_02)|
 |3/26|Testing Asynchronous Code|Hello-Day|
 |4/10|Setup and Teardown|Ruru|
 |4/17|Mock Functions|Letter|
