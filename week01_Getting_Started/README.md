@@ -4,7 +4,7 @@ Node version : v10.16.0
 
 ## global install
 
-### step 1 - install Jest globally
+### step 1 - install Jest global
 
 yarn : `yarn global add jest`
 npm : `npm install jest --global`
@@ -28,10 +28,12 @@ npm : `npm install --save-dev jest`
 
 If single file test, can be specified path in `package.json`
 
-```Javascript
+##### Note: the file path
+
+```Javascripte
 {
   "scripts": {
-    "test": "jest --watchAll --runTestsByPath ＝./jest_test/*.js"
+    "test": "jest --watchAll --runTestsByPath ＝./__test__/*.js"
   },
 }
 ```
@@ -45,7 +47,7 @@ yarn : `yarn add --dev babel-jest @babel/core @babel/preset-env`
 npm : `npm install --save-dev babel-jest`
 
 configure Babel to target current version of Node by creating config.js
-通過在項目的根目錄中創建 Babel.config.js 文件，配置 Babel 以針對當前版本的 Node:
+通過在專案的根目錄中創建 Babel.config.js 文件，配置 Babel 以針對當前版本的 Node:
 
 ```javascript
 // babel.config.js
@@ -63,6 +65,10 @@ module.exports = {
 };
 ```
 
-## Jest with TypeScript
+## Run test
 
-yarn : `yarn add --dev @babel/preset-typescript`
+run `yarn test` or `npm run test` and Jest will print test message
+
+準備檔案 `sum.js` 與 `sum.test.js` 並整理至不同檔案夾裡
+
+- export `sum.js`, import `sum.js` 至 `sum.test.js`
