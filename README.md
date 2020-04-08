@@ -32,7 +32,7 @@ Learning Unit Test by Jest offical web site
 | Date | Subject | Host |
 | ---  | ------- | ---- |
 | 3/12 | [Getting Started](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-01) | Kira |
-| 3/19 | Using Matchers | Lai |
+| 3/19 | [Using Matchers](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-02) | Lai |
 | 3/26 | Testing Asynchronous Code | Hello-Day |
 | 4/10 | Setup and Teardown | Ruru |
 | 4/17 | Mock Functions | Letter |
