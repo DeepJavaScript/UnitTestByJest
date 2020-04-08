@@ -1,4 +1,4 @@
-const sum = require('./sum');
+const sum = require('../js/sum');
 
 // 可整包用 describe 包起來，讓測試更有結構一些。
 describe('測試sum', function () {

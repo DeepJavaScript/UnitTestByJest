@@ -1,9 +1,0 @@
-{
-  "script": {
-    "test": "jest"
-  },
-  "devDependencies": {
-    "babel-jest": "^25.1.0",
-    "jest": "^25.1.0"
-  }
-}
