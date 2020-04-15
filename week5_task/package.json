@@ -11,5 +11,8 @@
   },
   "scripts": {
     "test": "jest --coverage"
+  },
+  "dependencies": {
+    "moment": "^2.24.0"
   }
 }
