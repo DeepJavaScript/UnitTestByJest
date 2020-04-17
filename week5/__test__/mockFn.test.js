@@ -23,3 +23,23 @@ describe('set mock value',()=>{
     console.log(mockFn(),mockFn(),mockFn())
   })
 })
+
+// function forEach(items, callback) {
+//   for (let index = 0; index < items.length; index++) {
+//     callback(items[index]);
+//   }
+// }
+
+// const mockCallback = jest.fn(x => 42 + x);
+// forEach([0, 1], mockCallback);
+// console.log(mockCallback.mock.calls)
+// console.log(mockCallback.mock.results)
+
+
+
+let mockReturnFn = jest.fn()
+mockReturnFn
+.mockReturnValue(null)
+.mockReturnValueOnce(false)
+.mockReturnValueOnce(true)
+console.log(mockReturnFn(),mockReturnFn(),mockReturnFn())
