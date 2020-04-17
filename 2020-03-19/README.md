@@ -1,6 +1,20 @@
 # Using Matchers
 
-承上週的進度
+上週，處理了環境建置，還沒有辦法執行 jest 的朋友們，可以看看上一週的內容哦
+這一週，我們要來看看如何判斷測試對錯。
+
+一般來說，這個環節稱為「斷言庫」，也就是 ASSERT 這個術語。
+大多數的斷言庫，都會出現「BDD style」的選項，在 Jest 這裡是 BDD only 所以不特別描述這件事。
+因為 BDD 的宗旨大概是「為產品行為寫測試」[^intro-bdd]所以，測試項目的程式碼理論上就產品驗收標準綁在一起。[^bdd]
+所以，**如果寫得語意化，非工程師人員，應該也可以看得懂了吧？** 就這樣產生了 BDD 的 assertion
+在 BDD 出現的時間點，斷言庫也才變成了現在這個「語意化」的樣貌。
+
+想看看有區別斷言庫風格的套件，可以參考 [Chai 的 assertion style 介紹](https://www.chaijs.com/guide/styles/)
+
+[^intro-bdd]: [INTRODUCING BDD](https://dannorth.net/introducing-bdd/)
+[^bdd]: [行為驅動開發 - wiki](https://zh.wikipedia.org/wiki/%E8%A1%8C%E4%B8%BA%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91)
+
+接下來看看 Jest 為了測試判斷正確，準備了哪些基本的入門款給我們吧！
 
 ## Common Matchers
 
@@ -156,7 +170,21 @@ test('compiling android goes as expected', () => {
 
 ## JSON Schema
 
+另外，如果只是要確定欄位的結構是否正確，可以試看看 JSON Schema 哦
+
 ```shell
 npm install --save-dev jest-json-schema
+```
+
+## 再學一個 Jest 指令參數
+
+在測試程式剛寫幾個時， Jest 會幫你印出你的測試項目，並且寫上是否正確，這份文件非常適合提交給客戶。 ~~(並且再多收一筆可靠度的費用)~~ 
+但是，卻在寫了更多的測試之後，這個報告卻自動的不見了！怎辦？
+這時要知道 Jest 有準備一個參數 `--verbose` 讓它印出來。
+
+[Is there an option to show all test descriptions when I run jest tests?](https://stackoverflow.com/questions/50497630/is-there-an-option-to-show-all-test-descriptions-when-i-run-jest-tests)
+
+```shell
+jest --verbose
 ```
 
