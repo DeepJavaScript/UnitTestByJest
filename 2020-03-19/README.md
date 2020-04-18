@@ -3,9 +3,44 @@
 上週，處理了環境建置，還沒有辦法執行 jest 的朋友們，可以看看上一週的內容哦
 這一週，我們要來看看如何判斷測試對錯。
 
+## 測試 3A
+
+在正式介紹之前先說一下測試3A的概念。這並不是什麼評等的 AAA，而是一種測試程式的固定 pattern ，每一個測試，都應該要有的三個部份，而這三個部份都是由英文開頭的所以稱為**測試 3A**
+
+1. Arrange: 初始化目標物件、相依物件、方法參數、預期結果，或是預期與相依物件的互動方式
+2. Act: 呼叫目標物件的方法
+3. Assert: 驗證是否符合預期
+
+[^3A]: [[Day 3]動手寫Unit Test](https://ithelp.ithome.com.tw/articles/10102643)
+
+```javascript
+const {
+  sum
+ } = require("./Math");
+
+test('測試: 2 + 2 = 4', () => {
+  // Arrange
+  const addend = 2;
+  const augend = 2;
+  // Act
+  const answer = sum(addend + augend);
+  // Assert
+  expect(answer).toBe(4);
+});
+```
+
+> 命名參考[數學名詞中英文對照](https://blog.xuite.net/nikemomonike/twblog/124986223-%E6%95%B8%E5%AD%B8%E5%90%8D%E8%A9%9E%E4%B8%AD%E8%8B%B1%E6%96%87%E5%B0%8D%E7%85%A7)
+
+
+## 斷言庫
+
 一般來說，這個環節稱為「斷言庫」，也就是 ASSERT 這個術語。
+也就是來自測試 3A 的第 3A - assert
+
 大多數的斷言庫，都會出現「BDD style」的選項，在 Jest 這裡是 BDD only 所以不特別描述這件事。
-因為 BDD 的宗旨大概是「為產品行為寫測試」[^intro-bdd]所以，測試項目的程式碼理論上就產品驗收標準綁在一起。[^bdd]
+
+因為 BDD 的宗旨大概是「為產品行為寫測試」[^intro-bdd]所以，測試項目的程式碼理論上就產品驗收標準綁在一起。[^bdd] 
+
 所以，**如果寫得語意化，非工程師人員，應該也可以看得懂了吧？** 就這樣產生了 BDD 的 assertion
 在 BDD 出現的時間點，斷言庫也才變成了現在這個「語意化」的樣貌。
 
