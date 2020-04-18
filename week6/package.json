@@ -13,6 +13,8 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "jest-diff": "^25.3.0"
+    "jest-diff": "^25.3.0",
+    "jest-docblock": "^25.3.0",
+    "jest-get-type": "^25.2.6"
   }
 }
