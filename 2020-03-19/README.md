@@ -203,6 +203,24 @@ test('compiling android goes as expected', () => {
 });
 ```
 
+如果你需要參數，可以建立 arrow function 當作 callback 等待被 `expect` 呼叫。
+並且在執行 callback 時，會執行待測 function 就可以順利的拋出 exception 囉
+
+```javascript
+function compileAndroidCode(param) {
+  throw new Error('you are using the wrong JDK');
+}
+
+test('compiling android goes as expected', () => {
+  expect(() => compileAndroidCode(param)).toThrow();
+  expect(() => compileAndroidCode(param)).toThrow(Error);
+
+  // You can also use the exact error message or a regexp
+  expect(() => compileAndroidCode(param)).toThrow('you are using the wrong JDK');
+  expect(() => compileAndroidCode(param)).toThrow(/JDK/);
+});
+```
+
 ## JSON Schema
 
 另外，如果只是要確定欄位的結構是否正確，可以試看看 JSON Schema 哦
