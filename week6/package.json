@@ -11,5 +11,8 @@
   },
   "scripts": {
     "test": "jest --coverage"
+  },
+  "dependencies": {
+    "jest-diff": "^25.3.0"
   }
 }
