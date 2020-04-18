@@ -221,6 +221,11 @@ test('compiling android goes as expected', () => {
 });
 ```
 
+:::dangur
+我自己測試時，非同步的 function 若要拋出 exception 不適合這樣做。
+我自己的做法，還是老老實實的寫一個 try-catch 將待測物寫在 `try` 裡，而 `expect` 則寫在 `catch` 裡。
+:::
+
 ## JSON Schema
 
 另外，如果只是要確定欄位的結構是否正確，可以試看看 JSON Schema 哦
