@@ -1,0 +1,25 @@
+{
+  "name": "jest-practice",
+  "version": "1.0.0",
+  "description": "practice about jest",
+  "main": "index.js",
+  "scripts": {
+    "test1": "jest --coverage ./week01/ --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeepJavaScript/UnitTestByJest.git"
+  },
+  "keywords": [
+    "jest"
+  ],
+  "author": "ruru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeepJavaScript/UnitTestByJest/issues"
+  },
+  "homepage": "https://github.com/DeepJavaScript/UnitTestByJest#readme",
+  "dependencies": {
+    "jest": "^25.3.0"
+  }
+}
