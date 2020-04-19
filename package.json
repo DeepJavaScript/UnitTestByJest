@@ -4,7 +4,8 @@
   "description": "practice about jest",
   "main": "index.js",
   "scripts": {
-    "test1": "jest --coverage ./week01/ --watch"
+    "test1": "jest --coverage ./week01/ --watch",
+    "test2": "jest --coverage ./week02/ --watch"
   },
   "repository": {
     "type": "git",
