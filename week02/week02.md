@@ -64,8 +64,35 @@ test("[1,2,3] contain 2", () => {
 
 ### ToMatch 測試正則
 
-比起 `/\/.test('str')` 中會自動轉型別，此處不會，除非轉換型別，只能針對字串測試。
+`/\/.test('str')` 中會自動轉型別，此處只能針對字串測試。
 
-### try catch error
+```javascript
+test("/d/", () => {
+  expect("2").toMatch(/\d/);
+  // 不能直接驗證數字，不會轉型
+});
+```
 
-可以使用 `toThrow` 但目前只看到針對 fun 去判別，而非整體執行的返回結果。
+### Throw Error
+
+```javascript
+function compileAndroidCode() {
+  throw new Error("you are using the wrong JDK");
+}
+
+test("compiling android goes as expected", () => {
+  expect(compileAndroidCode).toThrow();
+  expect(compileAndroidCode).toThrow(Error);
+
+  // You can also use the exact error message or a regexp
+  expect(compileAndroidCode).toThrow("you are using the wrong JDK");
+  expect(compileAndroidCode).toThrow(/JDK/);
+});
+```
+
+---
+
+### 補充 3A 原則
+
+
+
