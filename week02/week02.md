@@ -66,6 +66,6 @@ test("[1,2,3] contain 2", () => {
 
 比起 `/\/.test('str')` 中會自動轉型別，此處不會，除非轉換型別，只能針對字串測試。
 
-### try catch error
+### Throw Error
 
 可以使用 `toThrow` 但目前只看到針對 fun 去判別，而非整體執行的返回結果。
