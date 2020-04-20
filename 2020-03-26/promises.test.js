@@ -1,6 +1,7 @@
 const {
   fetchData,
-  fetchDataErr
+  fetchDataErr,
+  fetchDataReject
 } = require('./fetchDataPromise');
 
 test('the data is peanut butter', () => {
@@ -11,13 +12,9 @@ test('the data is peanut butter', () => {
 
 test('the fetch fails with an error', () => {
   expect.assertions(1);
-  return fetchDataErr().catch(e => expect(e).toMatch('error'));
+  return fetchDataReject().catch(e => expect(e).toMatch('error'));
 });
 
-test('the data is peanut butter(shorthand)', () => {
-  return expect(fetchData()).resolves.toBe('peanut butter');
-});
-
-test('the fetch fails with an error(shorthand)', () => {
-  return expect(fetchDataErr()).rejects.toMatch('error');
+test('the fetch fails with an reject error(shorthand)', () => {
+  return expect(fetchDataReject()).rejects.toMatch('error');
 });

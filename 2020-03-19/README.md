@@ -1,17 +1,17 @@
-# Using Matchers
+# 讀 Jest Doc - 斷言庫
 
 上週，處理了環境建置，還沒有辦法執行 jest 的朋友們，可以看看上一週的內容哦
 這一週，我們要來看看如何判斷測試對錯。
 
 ## 測試 3A
 
-在正式介紹之前先說一下測試3A的概念。這並不是什麼評等的 AAA，而是一種測試程式的固定 pattern ，每一個測試，都應該要有的三個部份，而這三個部份都是由英文開頭的所以稱為**測試 3A**
+在正式介紹之前先說一下測試3A的概念。這並不是什麼評等的 AAA，而是一種測試程式的固定 pattern ，每一個測試，都應該要有的三個部份，而這三個部份都是由英文開頭的所以稱為**測試 3A**[^3A]
 
 如果以煮菜來解釋
 
 1. Arrange: 準備材料
-1. Act: 煮東西
-1. Assert: 試吃，看看結果如何？
+2. Act: 煮東西
+3. Assert: 試吃，看看結果如何？
 
 [^3A]: [[Day 3]動手寫Unit Test](https://ithelp.ithome.com.tw/articles/10102643)
 
@@ -33,8 +33,7 @@ test('測試: 2 + 2 = 4', () => {
 
 > 命名參考[數學名詞中英文對照](https://blog.xuite.net/nikemomonike/twblog/124986223-%E6%95%B8%E5%AD%B8%E5%90%8D%E8%A9%9E%E4%B8%AD%E8%8B%B1%E6%96%87%E5%B0%8D%E7%85%A7)
 
-
-## 斷言庫
+# Using Matchers
 
 一般來說，這個環節稱為「斷言庫」，也就是 ASSERT 這個術語。
 也就是來自測試 3A 的第 3A - assert
@@ -189,6 +188,7 @@ test('the shopping list has beer on it', () => {
 ## Exceptions
 
 拋出例外，也可以測試。超好用。
+在這要注意，放在 `expect` 裡的，是一個 callback，由 `expect` 代替你執行。
 
 ```javascript
 function compileAndroidCode() {
@@ -248,3 +248,10 @@ npm install --save-dev jest-json-schema
 jest --verbose
 ```
 
+## 下回見
+
+喜歡的話歡迎訂閱、按讚、分享。
+有任何問題也歡迎在下方留言討論。
+
+如果想參加聚會的話，可以私訊給我哦~
+我們下一篇見

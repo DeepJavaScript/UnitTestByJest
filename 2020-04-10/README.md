@@ -1,4 +1,4 @@
-# Setup and Teardown
+# 讀 Jest Doc - 單元測試的結構、執行順序與名詞解釋
 
 上一篇，聊了關於非同步問題。
 這一篇，我們要更了解 Jest 的生命週期 (其實就是執行順序)。
@@ -13,9 +13,59 @@
 
 [^3A]: [[Day 3]動手寫Unit Test](https://ithelp.ithome.com.tw/articles/10102643)
 
+## 單元測試的血脈
+
+單元測試框架，最早是由 Smalltalk 的 SUnit[^sunit] 的單元測試框架結構，而成名之作是由 Kent Beck 用 Java 寫的 JUnit，在[《重構─改善既有程式的設計, 2/e》](https://www.tenlong.com.tw/products/9789861547534)一書中有介紹其架構與設計。並且於 2018 再重新出版，[《重構｜改善既有程式的設計, 2/e》](https://www.tenlong.com.tw/products/9789865021832?list_name=c-refactoring)一書中的例子，全面改寫成 JavaScript 而介紹單元測試的章節。
+
+之後許許多多的單元測試框架，也由不同的語言重新實作，並且命名也有一個慣例[^xunit-list]，而這種重新實作 JUnit 的框架，統稱為 xUnit[^xunit]，不過**不代表這麼命名的框架為該語言的主流測試框架**。
+
+ex: 
+
+- Bash: ShUnit, shUnit2
+- C語言: CUnit
+- C++: CppUnit
+- Objective-C: OCUnit, XCTest
+- Swift: XCTest
+- SystemVerilog: VUnit
+- Java: JUnit
+- JavaScript: JSUnit(Jasmine)
+- jQuery: QUnit
+- PHP: PHPUnit, Codeception
+
+由於 JUnit 是由物件導向語言而撰寫而成，所以一些非純物件導向語言或可以透過自身語言特性簡化其 xUnit 的類別結構。
+
+**Jest 並不是 xUnit 系列的測試框架**
+
+在此就一邊引用 [Jasmine](https://jasmine.github.io/tutorials/your_first_suite.html) 一邊對照 CppUnit 來看看，在 JavaScript 中的術語如何對到 JUnit 上術語。
+
+[^sunit]: [SUnit - Wikipedia](https://en.wikipedia.org/wiki/SUnit)
+[^xunit]: [xUnit - Wikipedia](https://en.wikipedia.org/wiki/XUnit)
+[^xunit-list]: [List of unit testing frameworks - Wikipedia](https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks)
+
+![](https://i.imgur.com/mvbAwWr.png)
+[Cppunit下載、編譯、使用與困難排除, p38](https://www.slideshare.net/dwatow/cppunit-56845277#38)
+
+|xUnit|Jasmine|備註
+|-|-|-|
+|TestCase| it |
+|Fixture| describe | 有 beforeEach，裡面可以加入 TestCase|
+|Assertion|expect + matcher(BDD) |
+|Suite|檔案的頂層 describe|
+
+測試不多，可以只用 Fixture (Object) + TestCase (method)
+測試變多 xUnit 會使用 Suite (會用 Caller) 將 `Fixture::suite()` 集結起來，再整包執行。
+
+主要就先了解到這。
+CppUnit 的**測試主程式**，一般來說是固定寫法，有需要修改的地方，是輸出的 report 是要印在 terminal 還是寫成 xml 檔案。
+也許 Jasmine 也都寫死了，不用改寫，呼叫時用參數再決定就可以了。
+
+接下來就來看看 ~~`Fixture` 的~~ `beforeEach`/`afterEach` 要怎麼在 Jest 寫囉。
+
+# Setup and Teardown
+
 哪些是先執行，哪些是後執行的？
 
-這個功能，主要需求，是成套的的測試，往往只差一點點。
+在成套的的測試中，往往只差一點點。
 這些測試會有「一致的準備過程」，有時還需要有「一致的收尾」。
 
 ## Repeating Setup For Many Tests
@@ -47,6 +97,7 @@ beforeEach(() => {
   return initializeCityDatabase("beforeEach");
 });
 ```
+
 ## One-Time Setup
 
 只想要用一次的初始/釋放。

@@ -7,7 +7,8 @@
     "test1": "jest --verbose ./2020-03-12/ --watch --config=jest.config.js",
     "test2": "jest --verbose ./2020-03-19/ --watch --config=jest.config.js",
     "test3": "jest --verbose ./2020-03-26/ --watch --config=jest.config.js",
-    "test4": "jest --verbose ./2020-04-10/ --watch --config=jest.config.js"
+    "test4": "jest --verbose ./2020-04-10/ --watch --config=jest.config.js",
+    "test5": "jest --verbose ./2020-04-16/ --watch --config=jest.config.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +28,7 @@
     "jest": "^25.1.0",
     "jest-json-schema": "^2.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
 }

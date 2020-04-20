@@ -1,6 +1,7 @@
 module.exports = {
   fetchData,
-  fetchDataErr
+  fetchDataErr,
+  fetchDataReject
 };
 
 function fetchData(callback) {
@@ -11,10 +12,15 @@ function fetchData(callback) {
   })
 }
 
-function fetchDataErr(callback) {
+function fetchDataReject(callback) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       reject('error')
     }, 500);
+  })
+}
+function fetchDataErr(callback) {
+  return new Promise((resolve, reject) => {
+    throw new Error('error')
   })
 }

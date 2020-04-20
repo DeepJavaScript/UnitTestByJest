@@ -1,4 +1,4 @@
-# Testing Asynchronous Code
+# 讀 Jest Doc - 非同步測試
 
 上週，我們看了各式各樣的基本的斷言庫，可以讓我們測試簡單型別(Number/String/Boolean)，測試非零值(undefined/null)，測試複雜型別(Object/Array)，甚至還可以測試是否例外的發生行為，以及測試例外錯誤(Error)
 
@@ -6,9 +6,26 @@
 這個就沒什麼測試觀念要帶入~~，就純粹的在看是不是會寫 JavaScript 而已~~。
 對非同步沒有經驗或不懂的朋友，可以先看看影片: [所以說event loop到底是什麼玩意兒？| Philip Roberts | JSConf EU](https://www.youtube.com/watch?v=8aGhZQkoFbQ) 了解一下再繼續看哦
 
+# Testing Asynchronous Code
+
 依照[非同步的聖經](https://medium.com/@peterchang_82818/javascript-es7-async-await-%E6%95%99%E5%AD%B8-703473854f29-tutorial-example-703473854f29)的步調，來看非同步的三位一體吧！
 
 ## Callbacks
+
+**待測物**
+
+待測 function 是一個 `fetchData` 吃一個 callback 當參數。
+內部實作，就讓它隔一段時間再執行 callback，模仿 API 發送成功之後，呼叫 callback 的行為。
+
+```javascript
+function fetchData(callback) {
+  setTimeout(() => {
+    callback('peanut butter')
+  }, 500);
+}
+```
+
+**測試程式**
 
 :::danger
 測試千萬不要這樣寫
@@ -46,6 +63,46 @@ test('the data is peanut butter', done => {
 
 ## Promises
 
+**待測物**
+
+待測 function 是一個 `fetchData` 吃一個 callback 當參數。
+內部實作，除了承上的特性之外，還需要讓它回傳一個 promise 物件。
+
+- 在成功時，在 setTimeout 裡執行 promise 的 resolve
+- 在失敗時，在 setTimeout 裡執行 promise 的 reject
+- 在例外發生時，就特別不一樣了，不能在 setTimeout 裡。
+因為設計 setTimeout 是為了在 API 成功回傳之後，執行的內容
+而 exception 發生的時間點，通常是在 `new Promise()` 的 callback 這一層。所以特別寫出這個待測物的細節。 
+
+```javascript
+function fetchData(callback) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('peanut butter')
+    }, 500);
+  })
+}
+
+function fetchDataReject(callback) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject('error')
+    }, 500);
+  })
+}
+function fetchDataErr(callback) {
+  return new Promise((resolve, reject) => {
+    throw new Error('error')
+    setTimeout(() => {
+      reject('error')
+    }, 500);
+  })
+}
+
+```
+
+**測試程式**
+
 想要弄懂 Prmose 可以先看看這一篇: [JavaScript Promise：簡介  |  Web  |  Google Developers](https://developers.google.com/web/fundamentals/primers/promises?hl=zh-tw)
 
 :::danger
@@ -82,9 +139,9 @@ test('the fetch fails with an error', () => {
 Jest 斷言庫提供了 promise 的簡便寫法，這時就是 Effective Jest 的時刻了。
 
 :::danger
-注意: 使用 promise 可以不用 done，但是要使用 `.resolves` / `.rejects`。
+注意: 使用 promise 可以不用 `done` ，但是要使用 `.resolves` / `.rejects`。
 使用 `.rejects` 時，可以不用 `expect.assertions(1);`。
-無論使用哪一種，最後要記得，在該 return 時加上 return。
+無論使用哪一種，最後要記得，在該 `return` 時加上 `return。`
 :::
 
 ** 可靠的 `Promise.resolve()`**
@@ -99,13 +156,13 @@ test('the data is peanut butter(shorthand)', () => {
 
 ```javascript
 test('the fetch fails with an error(shorthand)', () => {
-  return expect(fetchDataErr()).rejects.toMatch('error');
+  return expect(fetchDataReject()).rejects.toMatch('error');
 });
 ```
 
 ## Async/Await
 
-使用 async/await 第一件事，就是要會用 async/await
+使用 async/await 第一件事，就是要先會用 promise
 
 1. 記得在要執行 await 的函數開頭，加上 async。
 2. 用 try-catch 捕捉 reject 的結果。 (取代 `.catch` 的語法)
@@ -135,12 +192,16 @@ test('the data is peanut butter(shorthand)', async () => {
   await expect(fetchData()).resolves.toBe('peanut butter');
 });
 
-test('the fetch fails with an error(shorthand)', async () => {
-  // await expect(fetchDataErr()).rejects.toThrow('error'); // 我這個執行失敗
-  await expect(fetchDataErr()).rejects.toMatch('error'); // 這個執行成功
+test('the fetch fails with an reject error(shorthand)', async () => {
+  await expect(fetchDataReject()).rejects.toMatch('error');
+});
+
+test('the fetch fails with an exception error(shorthand)', async () => {
+  await expect(fetchDataErr()).rejects.toThrow('error');
 });
 ```
 
 # 問題
 
 最後一個例子，不知道為什麼照官網寫的不能成功。
+感謝 [@高培修](https://www.facebook.com/pskaokao) 的解答，原來是我沒有把 reject 和 exception 的 case 弄清楚。
