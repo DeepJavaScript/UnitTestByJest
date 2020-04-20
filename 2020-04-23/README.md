@@ -1,5 +1,7 @@
 # Jest Platform
 
+這些，只要你有安裝 Jest 就等同於可以使用這些獨立功能。
+
 ## jest-changed-files
 
 https://www.npmjs.com/package/jest-changed-files
