@@ -462,4 +462,30 @@ https://www.npmjs.com/package/pretty-format
 
 輸出對人類讀取友善的程式排版。
 
-### Example
+```javascript
+const prettyFormat = require('pretty-format');
+
+const val = {object: {}};
+val.circularReference = val;
+val[Symbol('foo')] = 'foo';
+val.map = new Map([['prop', 'value']]);
+val.array = [-0, Infinity, NaN];
+
+console.log(prettyFormat(val));
+```
+
+```shell
+Object {
+  "array": Array [
+    -0,
+    Infinity,
+    NaN,
+  ],
+  "circularReference": [Circular],
+  "map": Map {
+    "prop" => "value",
+  },
+  "object": Object {},
+  Symbol(foo): "foo",
+}
+```
