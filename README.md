@@ -33,7 +33,7 @@ Learning Unit Test by Jest offical web site
 |3/12|[Getting Started](/2020-03-12)|Kira|
 |3/19|[Using Matchers](/2020-03-19)|Lai|
 |3/26|[Testing Asynchronous Code](/2020-03-26)|Hello-Day|
-|4/10|Setup and Teardown|Ruru|
-|4/17|Mock Functions|Letter|
-|4/24|Jest Platform|Chris|
-|4/31|
+|4/10|[Setup and Teardown](/2020-04-10)|Ruru|
+|4/17|[Mock Functions](/2020-04-16)|Letter|
+|4/24|[Jest Platform](/2020-04-23)|Chris|
+|4/31|||
