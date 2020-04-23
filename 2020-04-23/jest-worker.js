@@ -9,7 +9,12 @@ async function main() {
     worker.myHeavyTask(1),
   ]);
 
-  console.log(results);
+  const workend = await worker.end();
+
+  return {
+    results,
+    workend
+  };
 }
 
-main();
+main().then(res => console.log(res));

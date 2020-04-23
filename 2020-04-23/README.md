@@ -21,14 +21,28 @@ getChangedFilesForRoots(roots: <Array<string>>, options: ?object): Promise<?obje
 
 - roots: 要檢查的路徑們，以 [jest 設定的根目錄](https://jestjs.io/docs/en/configuration#rootdir-string)為根目錄。
 - options: 一個物件，可以設定 `lastCommit`、`withAncestor`
-  - `lastCommit`: 
+  - `lastCommit`: (不建議用) 
     - true 要看最後一次提交，有改哪些檔案？
     - false 現在與最後一次比較，有改哪些檔案？
   - `withAncestor`: (不知道是不是和自己有關)
+    - true 執行 `git show --name-only --pretty=format:HEAD^`
+    - false (執行下一段介紹的指令)
+  - `changedSince: string`
+      - 指定 commit SHA-1 值，代表要從該 commit 至最新的 commit 有哪些已變更檔案和 repo
+      - 等同於執行以下指令取得這些 repo 資訊：
+        - committed：`git log --name-only --pretty=format:HEAD ^<commit>`
+        - staged：`git diff --cached --name-only`
+        - unstaged：`git ls-files --other --modified --exclude-standard`
+      - 若未設定 `changedSince` 等同於執行取得這些 repo 資訊：同上面的 staged 和 unstaged
+      - 若 `lastCommit` 為 `true` 時，不用使用 `changedSince`
+    - `includePaths: Array<string>`
+      - 過濾指定的路徑
+      - 路徑很像不能用 `*`
   ```
   {
     lastCommit: boolean
-    withAncestor: boolean
+    withAncestor: boolean,
+    changedSince: string
   }
   ```
 
