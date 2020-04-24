@@ -1,9 +1,49 @@
 # 測試替身
 
 戲劇演員的替身, 在英文裡叫 body double 或 stunt double[^double]
-[^double]: [“替身”, “分身” 的英文怎麼說?](http://blogs.teachersammy.com/Blogs/entry/how-to-describe-doubles-clones-twins-in-English)
+[^double]: ["替身", "分身" 的英文怎麼說?](http://blogs.teachersammy.com/Blogs/entry/how-to-describe-doubles-clones-twins-in-English)
+
+**待測物與相依元件**[^sut-doc]
+
+- **SUT**：System Under Test 或 Software Under Test 的簡寫，代表**待測程式**。如果是單元測試，SUT 就是一個 function 或 method。
+- **DOC**：Depended-on Component (相依元件)，又稱為 Collaborator (合作者)。DOC 是 SUT 執行的時候會使用到的元件。
+
+[^sut-doc]: [Test Double（1）：什麼是測試替身？ - 搞笑談軟工](http://teddy-chen-tw.blogspot.com/2014/09/test-double1.html)
+
+在實案例中，模組之間是會相依在一起的，執行單元測試時，要視情況將「與外部溝通」的相依元件進行替換，這是一種不修改產品 code 的替換手法，例如有些情況，是不確定相依元件的穩定性，而進行 test double 的替換。[^when-to-use-it]
+
+[^when-to-use-it]: [When To Use It - Test Double at XUnitPatterns.com](http://xunitpatterns.com/Test%20Double.html)
+
+1. 一來保持測試速度都是在記憶體內完成，不會到讀寫檔案、Web API...等，與外部資源互動而拖長測試時間。
+2. 針對問題的範圍進行測試，可以視情況的縮小 specical case，也就是說，可以讓 SUT 不依賴原本的 DOC 也可以測試。
 
 
+在 [xunitpatterns](http://xunitpatterns.com/Test%20Double.html) 裡特別分成五種 Test Double
+分別是 Dummy Object、Test Stub、Test Spy、Fake Object 與 Mock Object。
+
+其實，就是假的，到超級假的等級區分。
+
+```
+No Implement > Dummies > Stubs > Spies > Facke > Real Implement
+```
+
+常見的術語，只要知道 Stub、Spy、Mock
+
+- Stub: 回傳 hack-code 內容。
+- Spy: 跟著真實本體，告訴你他發生了什麼。
+- Mock: 假的本體替身，看他身上的痕跡，了解他發生了什麼。
+
+> 如果說 jest.fn 能夠作為一個 Function 的替身，那麼 jest.mock 就是能模擬整個模組的 Mock！
+> -- 神Ｑ超人
+
+**jest.spyOn()**
+
+> SUT 一直享受著假資料帶來的美好，當過程中動用到 DOC 邏輯等或修改回傳值時。上線時卻會有「什麼！這傢伙怎麼會回傳這種東西？測試明明就沒有錯！」之類的慘劇發生。
+> 
+> 但是 jest.spyOn() 不同，它會去重現 DOC 的邏輯，即使在任何時候修改了它的任何內容都一樣，SUT 在測試時便會發現 DOC 已經和之前測試時有所不同，不論是邏輯、回傳值等等，這時候捕獲了真實資料的測試結果才會有效。
+> 
+> 那 jest.mock() 整個那麼假，可以用在哪裡？用在模擬無法重現邏輯、或者根本不會去變動的第三方套件時。
+> -- 神Q超人
 
 # Mock Functions
 
