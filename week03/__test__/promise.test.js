@@ -2,10 +2,10 @@ import { fetchData } from "../promise.js";
 
 describe("測試約定 resolve 和 reject 回傳相異數值", () => {
   it("傳入 0 回傳 peanut butter", () => {
-    return fetchData(2).catch((response) => expect(response).toBe("Error"));
+    return fetchData(2).then((response) => expect(response).toBe("peanut butter"));
   });
   it("傳入 true 回傳 peanut butter", () => {
-    return fetchData(true).catch((response) => expect(response).toBe("Error"));
+    return fetchData(true).then((response) => expect(response).toBe("peanut butter"));
   });
   it("傳入 falsey 回傳 Error", () => {
     expect.assertions(1);
