@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test1": "jest --coverage ./week01/ --watch",
-    "test2": "jest --coverage ./week02/ --watch"
+    "test2": "jest --coverage ./week02/ --watch",
+    "test3": "jest --coverage ./week03/ --watch"
   },
   "repository": {
     "type": "git",
