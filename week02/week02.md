@@ -90,9 +90,3 @@ test("compiling android goes as expected", () => {
 });
 ```
 
----
-
-### 補充 3A 原則
-
-
-
