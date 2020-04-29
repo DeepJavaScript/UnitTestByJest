@@ -1,15 +1,32 @@
-'use strict';
+"use strict";
 
-import React from 'react';
-import Link from '../Link.react';
-import renderer from 'react-test-renderer';
+import React from "react";
+import Link from "../Link.react";
+import renderer from "react-test-renderer";
 
-it('renders correctly', () => {
+it("renders correctly", () => {
   const tree = renderer
     .create(<Link page="http://www.facebook.com">Facebook</Link>)
     .toJSON();
-  expect(tree).toMatchSnapshot();
+  expect(tree).toMatchInlineSnapshot(`
+    <a
+      className="normal"
+      href="http://www.facebook.com"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      Facebook
+    </a>
+  `);
 });
+
+// 把 facebook 改成 ig
+// it('renders correctly', () => {
+//   const tree = renderer
+//     .create(<Link page="http://www.instagram.com">Instagram</Link>)
+//     .toJSON();
+//   expect(tree).toMatchSnapshot();
+// });
 
 // it('renders as an anchor when no page is set', () => {
 //   const tree = renderer.create(<Link>Facebook</Link>).toJSON();
