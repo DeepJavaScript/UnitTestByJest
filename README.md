@@ -33,8 +33,8 @@ Learning Unit Test by Jest offical web site
 | ---  | ------- | ---- |
 | 3/12 | [Getting Started](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-01) | Kira |
 | 3/19 | [Using Matchers](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-02) | Lai |
-| 3/26 | Testing Asynchronous Code | Hello-Day |
-| 4/10 | Setup and Teardown | Ruru |
-| 4/17 | Mock Functions | Letter |
-| 4/24 | Jest Platform | Chris |
-| 4/31 | 
+| 3/26 | [Testing Asynchronous Code](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-03) | Hello-Day |
+| 4/10 | [Setup and Teardown](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-04) | Ruru |
+| 4/17 | [Mock Functions](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-05) | Letter |
+| 4/24 | [Jest Platform](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-06) | Chris |
+| 4/30 | [Snapshot Testing](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-07) | Titan |
