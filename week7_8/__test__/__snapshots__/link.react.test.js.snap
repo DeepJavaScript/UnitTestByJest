@@ -10,3 +10,26 @@ exports[`renders correctly 1`] = `
   Facebook
 </a>
 `;
+
+exports[`will check the matchers and pass 1`] = `
+Object {
+  "createdAt": Any<Date>,
+  "id": Any<Number>,
+  "name": "LeBron James",
+}
+`;
+
+exports[`will check the values and pass 1`] = `
+Object {
+  "createdAt": Any<Date>,
+  "name": "Bond... James Bond",
+}
+`;
+
+exports[`will fail every time 1`] = `
+Object {
+  "createdAt": 2020-05-04T07:52:08.062Z,
+  "id": 13,
+  "name": "LeBron James",
+}
+`;

@@ -28,34 +28,38 @@ it("renders correctly", () => {
 //   expect(tree).toMatchSnapshot();
 // });
 
-// it('renders as an anchor when no page is set', () => {
-//   const tree = renderer.create(<Link>Facebook</Link>).toJSON();
-//   expect(tree).toMatchSnapshot();
-// });
+// 總是失敗
+it.skip('will fail every time', () => {
+  const user = {
+    createdAt: new Date(),
+    id: Math.floor(Math.random() * 20),
+    name: 'LeBron James',
+  };
 
-// it('properly escapes quotes', () => {
-//   const tree = renderer
-//     .create(<Link>{"\"Facebook\" \\'is \\ 'awesome'"}</Link>)
-//     .toJSON();
-//   expect(tree).toMatchSnapshot();
-// });
+  expect(user).toMatchSnapshot();
+});
 
-// it('changes the class when hovered', () => {
-//   const component = renderer.create(
-//     <Link page="http://www.facebook.com">Facebook</Link>,
-//   );
-//   let tree = component.toJSON();
-//   expect(tree).toMatchSnapshot();
+it('will check the matchers and pass', () => {
+  const user = {
+    createdAt: new Date(),
+    id: Math.floor(Math.random() * 20),
+    name: 'LeBron James',
+  };
 
-//   // manually trigger the callback
-//   tree.props.onMouseEnter();
-//   // re-rendering
-//   tree = component.toJSON();
-//   expect(tree).toMatchSnapshot();
+  expect(user).toMatchSnapshot({
+    createdAt: expect.any(Date),
+    id: expect.any(Number),
+  });
+});
 
-//   // manually trigger the callback
-//   tree.props.onMouseLeave();
-//   // re-rendering
-//   tree = component.toJSON();
-//   expect(tree).toMatchSnapshot();
-// });
+it('will check the values and pass', () => {
+  const user = {
+    createdAt: new Date(),
+    name: 'Bond... James Bond',
+  };
+
+  expect(user).toMatchSnapshot({
+    createdAt: expect.any(Date),
+    name: 'Bond... James Bond',
+  });
+});
