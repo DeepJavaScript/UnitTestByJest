@@ -9,6 +9,16 @@ Week 07：Snapshot Testing
 - 意外的變更
 - reference snapshot 需要更新到 UI 元件的新版本
 
+為何要用 snapshot testing？
+- 不用擔心：測試是在指令列執行，不用真的在瀏覽器執行，所以不用等待建構、開啟瀏覽器、載入頁面和驅動 UI 使元件進入預期狀態，這樣狀態會不穩定，並且測試結果會變得很雜
+- 快速迭代：快速得到結果
+- debugging：不用重新建立 screenshot test scenario 並 debug 視覺化差異中發生的事
+
+不是每個測試都適合用 snapshot testing：
+- 期望 (expected) 較穩定的定義，有明確的行為：一般的測試適合 assertion-based 的測試
+- 常變更的定義，不明確的行為：適合用 snapshot testing
+  - 例如：UI testing，因為常會做一些瑣碎的變更，例如：新增空白、更改 class，或是 HTML 結構會隨著時間推移改很大
+
 ## 使用 Jest 進行 snapshot 測試
 
 ```javascript
@@ -120,7 +130,7 @@ Time:        0.794s, estimated 1s
 Ran all test suites matching /.\/week-07\/__tests__\/linkElement.test.js/i.
 ```
 
-若要指定哪個測試需要重新產生 snapshot，可加上 `--testNamePattern=<regex>` option：
+本來 `--testNamePattern=<regex>` option 是用來過濾只執行指定的測試，加上 `-u` option 後，就能指定哪些測試需要重新產生 snapshot：
 
 ```javascript
 $ jest -u --testNamePattern=<regex>
@@ -204,15 +214,16 @@ describe("inline snapshots", () => {
 $ npx jest ./week-07/__tests__/inlineSnapshots.test.js
  PASS  week-07/__tests__/inlineSnapshots.test.js
   inline snapshots
-    ✓ render the link element of the Titangene Blog home page (14ms)
-                                                      › 1 snapshot written.
+    ✓ render the link element of the Titangene Blog home page (12ms)
+
+ › 1 snapshot written.
 Snapshot Summary
  › 1 snapshot written from 1 test suite.
 
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   1 written, 1 total
-Time:        0.885s, estimated 1s
+Time:        0.909s, estimated 1s
 Ran all test suites matching /.\/week-07\/__tests__\/inlineSnapshots.test.js/i.
 ```
 
@@ -233,98 +244,6 @@ describe("inline snapshots", () => {
 
 也可在指令使用 `--updateSnapshot` (或 `-u` ) option 或在 `--watch` 模式下按 `u` 鍵來更新 snapshot。
 
-## Property Matchers
-
-有時 snapshot 的物件中會有一些 field 生成 (例如：ID 和 Date)，若對這些物件進行 snapshot，就會在執行時常常發生 snapshot 失敗。
-
-```javascript
-// __tests__/propertyMatchers.test.js
-describe('Property Matchers', () => {
-  it('will fail every time', () => {
-    const user = {
-      name: 'Titan',
-      createdAt: new Date(),
-      id: Math.floor(Math.random() * 20)
-    };
-
-    console.log(user);
-  
-    expect(user).toMatchSnapshot();
-  });
-});
-```
-
-像上面的測試執行第二次時，snapshot 就會失敗：
-
-![](./images/2020-04-30-17-33-44.png)
-
-所以 Jest 允許你對任何 property 提供 asymmetric matcher。Jest 會在寫入 snapshot 或測試 snapshot 之前，檢查 matcher，然後將 snapshot 儲存至 snapshot 檔案中，而不是 received value：
-
-```javascript
-// __tests__/propertyMatchers.test.js
-describe('Property Matchers', () => {
-  it('will check the matchers and pass', () => {
-    const user = {
-      name: 'Titan',
-      createdAt: new Date(),
-      id: Math.floor(Math.random() * 20)
-    };
-
-    console.log(user);
-  
-    expect(user).toMatchSnapshot({
-      createdAt: expect.any(Date),
-      id: expect.any(Number),
-    });
-  });
-});
-```
-
-下面是 snapshot 儲存的內容：
-
-```javascript
-// __tests__/__snapshots__/propertyMatchers.test.js.snap
-exports[`Property Matchers will check the matchers and pass 1`] = `
-Object {
-  "createdAt": Any<Date>,
-  "id": Any<Number>,
-  "name": "Titan",
-}
-`;
-```
-
-也可以直接指定要被精確檢查並儲存至 snapshot 的值 (才不會受到錯誤值影響，讓 snapshot 儲存到錯誤的值)：
-
-```javascript
-// __tests__/propertyMatchers.test.js
-describe('Property Matchers', () => {
-  it('will check the values and pass', () => {
-    const user = {
-      name: 'Titan',
-      createdAt: new Date(),
-      id: Math.floor(Math.random() * 20)
-    };
-
-    console.log(user);
-  
-    expect(user).toMatchSnapshot({
-      name: 'Titan',
-      createdAt: expect.any(Date),
-      id: expect.any(Number),
-    });
-  });
-});
-```
-
-下面是 snapshot 儲存的內容：
-
-```javascript
-// __tests__/__snapshots__/propertyMatchers.test.js.snap
-exports[`Property Matchers will check the values and pass 1`] = `
-Object {
-  "createdAt": Any<Date>,
-  "id": Any<Number>,
-  "name": "Titan",
-}
-`;
-```
+:::info
+inline snapshot 看似比 external snapshot 還方便，能讓測試更易讀，但是，若 snapshot 值很長 (例如：較大的 component 所 render 出來的 HTML)，反而會讓測試很亂，這時反而用 external snapshot 會更適合，所以請慎用。
+:::

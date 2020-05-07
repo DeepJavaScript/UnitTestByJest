@@ -203,7 +203,7 @@ describe("render component", () => {
 
 在執行測試時，Jest 會提醒你哪些 snapshot 是過時 (obsolete) 狀態：
 
-![](2020-05-07-16-48-22.png)
+![](./images/2020-05-07-16-48-22.png)
 
 若要更新舊的 (也就是刪除舊的) snapshot，Jest 也會提醒你要記得要在執行 Jest 時用 `-u` option：
 
