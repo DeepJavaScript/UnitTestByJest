@@ -38,3 +38,4 @@ Learning Unit Test by Jest offical web site
 | 4/17 | [Mock Functions](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-05) | Letter |
 | 4/24 | [Jest Platform](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-06) | Chris |
 | 4/30 | [Snapshot Testing](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-07) | Titan |
+| 5/07 | [Snapshot Testing](https://github.com/DeepJavaScript/UnitTestByJest/tree/titan/week-08) | Titan |
