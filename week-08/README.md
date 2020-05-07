@@ -390,7 +390,7 @@ Jest 會為 invoke `toMatchSnapshot` matcher 的每個測試檔案生成一個�
 
 ### 如何解決 snapshot 檔案中的衝突？
 
-snapshot 檔案必須代表它們所覆蓋的模組的當前狀態。如果要合併兩個分支，且在 snapshot 檔案中遇到衝突時，可以手動解決，或透過執行 Jesy 並檢查結果來更新 snapshot 檔案。
+snapshot 檔案必須代表它們所覆蓋的模組的當前狀態。如果要合併兩個分支，且在 snapshot 檔案中遇到衝突時，可以手動解決，或透過執行 Jest 並檢查結果來更新 snapshot 檔案。
 
 ### 是否能將 snapshot testing 應用在 TDD？
 
