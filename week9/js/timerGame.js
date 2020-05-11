@@ -5,7 +5,7 @@ function timerGame(callback) {
   setTimeout(() => {
     console.log("Time's up -- stop!");
     callback && callback();
-  }, 1000);
+  }, 5000);
 }
 
 module.exports = timerGame;
