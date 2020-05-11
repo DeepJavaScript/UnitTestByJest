@@ -2,7 +2,7 @@
 
 jest.useFakeTimers();
 
-describe('infiniteTimerGame', () => {
+describe.skip('infiniteTimerGame', () => {
   test('schedules a 10-second timer after 1 second', () => {
     const infiniteTimerGame = require('../js/infiniteTimerGame');
     const callback = jest.fn();
@@ -26,4 +26,18 @@ describe('infiniteTimerGame', () => {
     expect(setTimeout).toHaveBeenCalledTimes(2);
     expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 10000);
   });
+});
+
+test('test advanceTimersByTime', () => {
+  const infiniteTimerGame = require('../js/infiniteTimerGame');
+  const callback = jest.fn();
+
+  infiniteTimerGame(callback);
+
+  jest.advanceTimersByTime(12000);
+
+  // And it should have created a new timer to start the game over in
+  // 10 seconds
+  expect(setTimeout).toHaveBeenCalledTimes(4);
+  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 10000);
 });
