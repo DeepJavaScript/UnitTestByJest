@@ -7,6 +7,8 @@ describe("inline snapshots", () => {
 
     let actual = rendererLinkElement(url, linkName);
 
-    expect(actual).toMatchInlineSnapshot();
+    expect(actual).toMatchInlineSnapshot(
+      `"<a href=\\"https://titangene.github.io/\\">Titangene Blog</a>"`
+    );
   });
 });

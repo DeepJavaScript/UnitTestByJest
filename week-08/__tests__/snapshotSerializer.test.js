@@ -1,6 +1,6 @@
-import serializer from '../src/my-serializer-module';
+// import serializer from '../src/my-serializer-module';
 
-expect.addSnapshotSerializer(serializer);
+// expect.addSnapshotSerializer(serializer);
 
 it('snapshot object', () => {
   const bar = {

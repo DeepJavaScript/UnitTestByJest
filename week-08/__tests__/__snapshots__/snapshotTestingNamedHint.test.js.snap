@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render component render link element: rendor Google (First Test) 1`] = `"<a href=\\"https://www.google.com/\\">Google</a>"`;
+
+exports[`render component render link element: rendor Google (Second Test) 1`] = `"<a href=\\"https://www.google.com/\\">Google</a>"`;
+
+exports[`render component render link element: rendor Titangene Blog (First Test) 1`] = `"<a href=\\"https://titangene.github.io/\\">Titangene Blog</a>"`;
+
+exports[`render component render link element: rendor Titangene Blog (Second Test) 1`] = `"<a href=\\"https://titangene.github.io/\\">Titangene Blog</a>"`;

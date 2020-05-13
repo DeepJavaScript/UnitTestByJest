@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`toThrowErrorMatchingSnapshot throws on octopus 1`] = `"yuck, octopus flavor"`;

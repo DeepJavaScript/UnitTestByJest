@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render component render media element 1`] = `
+"
+    <section class=\\"media\\">
+      <img src=\\"https://titangene.github.io/logo.png\\" alt=\\"Titangene Blog Logo\\">
+      <a href=\\"https://titangene.github.io/\\">Titangene Blog</a>
+    </section>"
+`;
+
+exports[`render component render media element 2`] = `
+"
+    <section class=\\"media\\">
+      <img src=\\"https://titangene.github.io/logo.png\\" alt=\\"Titangene Blog Logo\\">
+      <a href=\\"https://titangene.github.io/\\">Titangene Blog</a>
+    </section>"
+`;
+
+exports[`render component render media element 3`] = `
+"
+    <section class=\\"media\\">
+      <img src=\\"https://www.google.com.tw/logo.png\\" alt=\\"Google Logo\\">
+      <a href=\\"https://www.google.com.tw/\\">Google</a>
+    </section>"
+`;
+
+exports[`render component render media element 4`] = `
+"
+    <section class=\\"media\\">
+      <img src=\\"https://www.google.com.tw/logo.png\\" alt=\\"Google Logo\\">
+      <a href=\\"https://www.google.com.tw/\\">Google</a>
+    </section>"
+`;

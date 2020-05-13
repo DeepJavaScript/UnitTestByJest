@@ -21,6 +21,8 @@ describe("toThrowErrorMatchingSnapshot", () => {
       drinkFlavor("octopus");
     }
 
-    expect(drinkOctopus).toThrowErrorMatchingInlineSnapshot();
+    expect(drinkOctopus).toThrowErrorMatchingInlineSnapshot(
+      `"yuck, octopus flavor"`
+    );
   });
 });

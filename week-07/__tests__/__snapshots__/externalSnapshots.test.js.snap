@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`external snapshots renders correctly 1`] = `"<a href=\\"https://titangene.github.io/\\">Titangene Blog</a>"`;
+exports[`external snapshots renders correctly 1`] = `"<a href=\\"https://www.google.com/\\">Google</a>"`;
 
 exports[`external snapshots renders correctly 2 1`] = `"<a href=\\"https://www.google.com/\\">Google1</a>"`;
